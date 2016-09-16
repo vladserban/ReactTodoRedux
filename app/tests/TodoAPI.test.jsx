@@ -59,4 +59,54 @@ describe("TodoAPI", () => {
 
     });
   });
+
+  describe("filterTodos", () => {
+    var todos = [
+      {
+        id: 1,
+        text: 'First todo',
+        completed: true
+      },
+      {
+        id: 2,
+        text: 'Other todo',
+        completed: false
+      },
+      {
+        id: 3,
+        text: 'Last First todo',
+        completed: true
+      }
+    ];
+
+    it("should return all items if showCompleted is true", () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+
+      expect(filteredTodos.length).toBe(todos.length);
+    });
+
+
+    it("should return only non-completed todos", () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, false, '');
+
+      expect(filteredTodos.length).toBe(1);
+    });
+
+    it("should sort by completed status (non-completed first)", () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+
+      expect(filteredTodos[0].completed).toBe(false);
+    });
+
+    it("should show all items if searchText is empty", () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+      expect(filteredTodos.length).toBe(todos.length);
+    });
+
+    it("should show only matching items with searchText", () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, 'first');
+      expect(filteredTodos.length).toBe(2);
+    });
+
+  });
 });
