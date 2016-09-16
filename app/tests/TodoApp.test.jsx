@@ -21,6 +21,9 @@ describe("TodoApp", () => {
 
     expect(todoApp.state.todos[0].text).toBe(todoText);
 
+    // Expect createdAt to be a number
+    expect(todoApp.state.todos[0].createdAt).toBeA('number');
+
   });
 
   it("should toggle completed state", () => {
@@ -28,7 +31,9 @@ describe("TodoApp", () => {
     var todoData = {
       id: 11,
       text: 'Test task',
-      completed: false
+      completed: false,
+      createdAt: 100,
+      completedAt: undefined
     };
     var todoApp = TestUtils.renderIntoDocument(<TodoApp />);
     todoApp.setState({
@@ -44,6 +49,8 @@ describe("TodoApp", () => {
     // check toggle result
     expect(todoApp.state.todos[0].completed).toBe(true);
 
+    // expect completedAt to be a number
+    expect(todoApp.state.todos[0].completedAt).toBeA('number');
   });
 
 });
