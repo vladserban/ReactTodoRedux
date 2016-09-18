@@ -17,6 +17,7 @@
     "axios": "^0.14.0",
     "css-loader": "^0.23.1",
     "express": "^4.14.0",
+    "firebase": "^3.0.2",
     "foundation-sites": "^6.2.0",
     "jquery": "^2.2.1",
     "react": "^0.14.7",
