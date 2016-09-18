@@ -12,10 +12,6 @@ store.subscribe( () => {
   console.log('New state', store.getState());
 });
 
-store.dispatch(actions.addTodo('Clean room'));
-store.dispatch(actions.setSearchText('bau'));
-store.dispatch(actions.toggleShowCompleted());
-
 // load foundation
 $(document).foundation();
 
