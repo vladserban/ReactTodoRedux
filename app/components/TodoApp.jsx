@@ -21,26 +21,8 @@ var TodoApp = React.createClass({
   componentDidUpdate: function () {
     TodoAPI.setTodos(this.state.todos);
   },
-  handleAddTodo: function (text) {
-    this.setState({
-      todos: [
-        ...this.state.todos,
-        {
-          id: uuid(),
-          text: text,
-          completed: false,
-          createdAt: moment().unix(),
-          completedAt: undefined
-        }
-      ]
-    });
-  },
-  handleSearch: function(showCompleted, searchText){
-    this.setState({
-      showCompleted: showCompleted,
-      searchText: searchText.toLowerCase()
-    });
-  },
+
+  
   render: function () {
     var {todos, showCompleted, searchText} = this.state;
     var filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
