@@ -25,11 +25,9 @@ export var startAddTodo = (text) => {
     };
 
     const todoRef = firebaseRef.child('todos').push(todo);
-    console.log("STAGE 1");
 
     return todoRef.then(
       () => {
-        console.log("STAGE 2");
 
         dispatch(addTodo({
           ...todo,
@@ -37,7 +35,7 @@ export var startAddTodo = (text) => {
         }));
       },
       (err) => {
-        console.log("STAGE 3 ERROR", err);
+
       }
     );
   };
@@ -48,6 +46,32 @@ export var addTodos = (todos) => {
   return {
     type: 'ADD_TODOS',
     todos
+  };
+};
+
+export var startAddTodos = () => {
+  return (dispatch, getState) => {
+
+    var todosRef = firebaseRef.child('todos');
+    return todosRef.once('value', (snapshot) => {
+
+        var snapshotObj = snapshot.val() || {};
+        var todos = [];
+
+        Object.keys(snapshotObj).forEach( (key) => {
+          console.log("spreading =", snapshotObj[key])
+          todos.push({
+            id: key,
+            ...snapshotObj[key]
+          });
+        });
+
+        dispatch(addTodos(todos));
+    },
+    (err) => {
+      // nothing...
+    });
+
   };
 };
 
