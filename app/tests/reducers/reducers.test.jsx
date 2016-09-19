@@ -52,16 +52,10 @@ describe('Reducers', () => {
       expect(res[0]).toEqual(action.todo);
     });
 
-    it('should toggle todo', () => {
-      var actionDog = {
-        type: 'TOGGLE_TODO',
-        id: 123
-      };
-      var actionCat = {
-        type: 'TOGGLE_TODO',
-        id: 124
-      };
 
+
+
+    it('should update todo', () => {
       var todos = [
         {
           id: 123,
@@ -69,27 +63,32 @@ describe('Reducers', () => {
           completed: false,
           createdAt: 999,
           completedAt: undefined
-        },
-        {
-          id: 124,
-          text: 'Pet cat',
-          completed: true,
-          createdAt: 999,
-          completedAt: 1098
-        },
+        }
       ];
 
-      var resDog = reducers.todosReducer( df(todos), df(actionDog) );
+      var updates = {
+        completed: true,
+        completedAt: 984784
+      }
 
-      expect(resDog[0].completed).toBe(true);
-      expect(resDog[0].completedAt).toNotBe(undefined);
+      var action = {
+        type: 'UPDATE_TODO',
+        id: todos[0].id,
+        updates
+      };
 
-      var resCat = reducers.todosReducer( df(todos), df(actionCat) );
+      var res = reducers.todosReducer( df(todos), df(action) );
 
-      expect(resCat[1].completed).toBe(false);
-      expect(resCat[1].completedAt).toBe(undefined);
-
+      expect(res[0]).toInclude({
+        id: action.id,
+        text: todos[0].text,
+        completed: updates.completed,
+        completedAt: updates.completedAt
+      });
     });
+
+
+
 
     it('should add batch todos', () => {
       var todos = [

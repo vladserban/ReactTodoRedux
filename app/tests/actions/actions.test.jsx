@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 
 var expect = require('expect');
 
-var actions = require('actions');
+import * as actions from 'actions';
 var createMockStore = configureMockStore([thunk]);
 
 describe("Actions", () => {
@@ -87,13 +87,17 @@ describe("Actions", () => {
     expect(res).toEqual(action);
   });
 
-  it('should generate toggle Todo action', () => {
+
+  it('should generate UPDATE_TODO action', () => {
     var action = {
-      type: 'TOGGLE_TODO',
-      id: 12
+      type: 'UPDATE_TODO',
+      id: 12,
+      updates: {
+        completed: false
+      }
     };
 
-    var res = actions.toggleTodo(12);
+    var res = actions.updateTodo(action.id, action.updates);
 
     expect(res).toEqual(action);
   });

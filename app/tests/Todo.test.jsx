@@ -5,6 +5,7 @@ var $ = require('jquery');
 var expect = require('expect');
 
 var {Todo} = require('Todo');
+import * as actions from 'actions';
 
 describe("Todo", () => {
   it("should exist", () => {
@@ -12,12 +13,15 @@ describe("Todo", () => {
   });
 
 
-  it("should dispatch TOGGLE_TODO action on click", () => {
+  it("should dispatch startToggleTodo action on click (aka toggle)", () => {
     var todoData = {
       id: 119,
       text: 'just another task',
-      completed: true
+      completed: true,
+      createdAt: 2344,
+      completedAt: 3244
     };
+    var action = actions.startToggleTodo(todoData.id, !todoData.completed);
 
     var spy = expect.createSpy();
     var todo = TestUtils.renderIntoDocument(<Todo {...todoData} dispatch={spy} />);
@@ -26,10 +30,7 @@ describe("Todo", () => {
 
     TestUtils.Simulate.click($el[0]);
 
-    expect(spy).toHaveBeenCalledWith({
-      type: 'TOGGLE_TODO',
-      id: 119
-    });
+    expect(spy).toHaveBeenCalledWith(action);
 
   });
 });
