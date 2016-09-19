@@ -15,7 +15,7 @@ export var Todo = React.createClass({
       return message + moment.unix(timestamp).format('MMM Do, YYYY @HH:mm');
     };
     return (
-      <div onClick={() => { dispatch(actions.toggleTodo(id)) }} className={todoClassName}>
+      <div onClick={() => { dispatch(actions.startToggleTodo(id, !completed)) }} className={todoClassName}>
         <div>
           <input type="checkbox" checked={completed} />
         </div>
