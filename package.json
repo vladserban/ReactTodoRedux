@@ -8,8 +8,9 @@
   "description": "React Time App",
   "main": "index.js",
   "scripts": {
-    "test": "karma start",
-    "start": "node server.js"
+    "test": "NODE_ENV=test karma start",
+    "build": "webpack",
+    "start": "npm run build && node server.js"
   },
   "author": "Vlad Serban",
   "license": "MIT",
@@ -24,7 +25,25 @@
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0",
     "script-loader": "^0.6.1",
-    "style-loader": "^0.13.0"
+    "style-loader": "^0.13.0",
+    "babel-core": "^6.5.1",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "deep-freeze-strict": "^1.1.1",
+    "expect": "^1.20.2",
+    "jasmine-core": "^2.5.0",
+    "moment": "^2.15.0",
+    "node-sass": "^3.4.2",
+    "node-uuid": "^1.4.7",
+    "react-addons-test-utils": "^0.14.7",
+    "react-redux": "^4.4.1",
+    "redux": "^3.3.1",
+    "redux-mock-store": "^1.0.3",
+    "redux-thunk": "^2.1.0",
+    "sass-loader": "^3.1.2",
+    "webpack": "^1.12.13"
   },
   "devDependencies": {
     "babel-core": "^6.5.1",
@@ -42,16 +61,6 @@
     "karma-mocha-reporter": "^2.0.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
-    "mocha": "^2.5.3",
-    "moment": "^2.15.0",
-    "node-sass": "^3.4.2",
-    "node-uuid": "^1.4.7",
-    "react-addons-test-utils": "^0.14.7",
-    "react-redux": "^4.4.1",
-    "redux": "^3.3.1",
-    "redux-mock-store": "^1.0.3",
-    "redux-thunk": "^2.1.0",
-    "sass-loader": "^3.1.2",
-    "webpack": "^1.12.13"
+    "mocha": "^2.5.3"
   }
 }
