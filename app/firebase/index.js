@@ -3,11 +3,11 @@ import firebase from 'firebase';
 // Initialize Firebase
 try {
   var config = {
-    apiKey: "AIzaSyDEOb3bbQX2g64qQJIKOwolWybDNQqOzzA",
-    authDomain: "reacttodotutorial.firebaseapp.com",
-    databaseURL: "https://reacttodotutorial.firebaseio.com",
-    storageBucket: "reacttodotutorial.appspot.com",
-    messagingSenderId: "890877468626"
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATABASE_URL,
+    storageBucket: process.env.STORAGE_BUCKET /*,
+    messagingSenderId: "890877468626" */
   };
 
   firebase.initializeApp(config);
