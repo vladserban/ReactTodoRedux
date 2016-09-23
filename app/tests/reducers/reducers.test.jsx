@@ -30,9 +30,7 @@ describe('Reducers', () => {
 
       var res = reducers.authReducer( df(state), df(action) );
 
-      expect(res).toEqual({
-        uid: ''
-      });
+      expect(res).toEqual({});
     });
 
   });
