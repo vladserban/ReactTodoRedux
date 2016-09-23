@@ -9,6 +9,26 @@ var createMockStore = configureMockStore([thunk]);
 
 describe("Actions", () => {
 
+  it('should generate doLogin action', () => {
+    var action = {
+      type: 'LOGIN',
+      uid: '123abc'
+    };
+
+    var res = actions.doLogin('123abc');
+    expect(res).toEqual(action);
+  });
+
+  it('should generate doLogout action', () => {
+    var action = {
+      type: 'LOGOUT',
+    };
+
+    var res = actions.doLogout();
+    expect(res).toEqual(action);
+  });
+
+
   it('should generate search text action', () => {
     var action = {
       type: 'SET_SEARCH_TEXT',

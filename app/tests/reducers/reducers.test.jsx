@@ -5,6 +5,38 @@ var reducers = require('reducers');
 
 describe('Reducers', () => {
 
+  describe('authReducer', () => {
+    it('should set auth uid on LOGIN', () => {
+      var action = {
+        type: 'LOGIN',
+        uid: 'abc123'
+      };
+
+      var res = reducers.authReducer( df({}), df(action) );
+
+      expect(res).toEqual({
+        uid: 'abc123'
+      });
+    });
+
+    it('should clear auth uid on LOGOUT', () => {
+      var action = {
+        type: 'LOGOUT'
+      };
+
+      var state = {
+        uid: 'something'
+      };
+
+      var res = reducers.authReducer( df(state), df(action) );
+
+      expect(res).toEqual({
+        uid: ''
+      });
+    });
+
+  });
+
   describe('searchTextReducer', () => {
     it('should set searchText', () => {
 
