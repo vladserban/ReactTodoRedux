@@ -59,7 +59,6 @@ export var startAddTodos = () => {
         var todos = [];
 
         Object.keys(snapshotObj).forEach( (key) => {
-          console.log("spreading =", snapshotObj[key])
           todos.push({
             id: key,
             ...snapshotObj[key]
