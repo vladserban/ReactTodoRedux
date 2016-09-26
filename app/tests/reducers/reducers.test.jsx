@@ -142,6 +142,26 @@ describe('Reducers', () => {
 
     });
 
+
+    it('should clear todos at logout', () => {
+      var todos = [
+        {
+          id: 123,
+          text: 'anything',
+          completed: false,
+          completedAt: undefined,
+          createdAt: 33000
+        }
+      ];
+      var action = {
+        type: 'LOGOUT'
+      };
+
+      var res = reducers.todosReducer( df(todos), df(action) );
+
+      expect(res.length).toEqual(0);
+    });
+
   });
 
 
