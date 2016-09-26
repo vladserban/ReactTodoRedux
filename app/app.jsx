@@ -13,6 +13,7 @@ import router from 'app/router/'
 firebase.auth().onAuthStateChanged( (user) => {
   if (user) {
     store.dispatch( actions.doLogin(user.uid) );
+    store.dispatch( actions.startAddTodos() );
     hashHistory.push('/todos');
   } else {
     store.dispatch( actions.doLogout() );
@@ -20,8 +21,7 @@ firebase.auth().onAuthStateChanged( (user) => {
   }
 });
 
-// load todos from firebase
-store.dispatch( actions.startAddTodos() );
+
 
 // load foundation
 $(document).foundation();
